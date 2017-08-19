@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-RUN apk add nginx \
+RUN apk update && apk upgrade && apk add nginx \
 	&& mkdir -p /var/lib/nginx/html/img /run/nginx
 
 COPY nginx.conf /etc/nginx/nginx.conf
