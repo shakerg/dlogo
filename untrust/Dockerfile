@@ -1,4 +1,4 @@
-FROM dtr.docker.ee/opsys/alpine:3.6 
+FROM alpine:3.6 
 
 LABEL maintainer="shaker242@gmail.com"
 
