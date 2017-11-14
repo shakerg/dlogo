@@ -1,4 +1,4 @@
-FROM alpine:3.6 
+FROM alpine:3.4 
 
 LABEL maintainer="shaker242@gmail.com"
 
