@@ -5,12 +5,16 @@ LABEL maintainer="shaker242@gmail.com"
 RUN apk update && apk upgrade && apk add nginx \
 	&& mkdir -p /var/lib/nginx/html/img /run/nginx
 
-COPY nginx.conf /etc/nginx/nginx.conf
+RUN chown nginx /var/log/nginx && chown nginx /run/nginx
 
-COPY tindex.html /var/lib/nginx/html/index.html
+USER nginx
 
-COPY /img/*.png /var/lib/nginx/html/img/
+COPY /trust/nginx.conf /etc/nginx/nginx.conf
 
-EXPOSE 80
+COPY /trust/index.html /var/lib/nginx/html/index.html
+
+COPY /trust/securemoby.png /var/lib/nginx/html/img/
+
+EXPOSE 8080
 
 CMD ["nginx"] 
