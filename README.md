@@ -6,4 +6,4 @@ This is a simple logo change demo that illistrates how eazy using CI/CD and Dock
 ## This repo actually includes 3 separate demo's.
 - basic logo
 - trusted logo (content-trust)
-- proxy with webservices
+- proxy with webservices (docker-compose)
