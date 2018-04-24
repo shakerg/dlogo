@@ -1,0 +1,17 @@
+version: "3.2"
+
+services:
+  demo:
+    image: ehazlett/docker-demo
+    deploy:
+      replicas: 1
+      labels:
+        com.docker.lb.hosts: demo.apps.docker.ee
+        com.docker.lb.network: ucp-hrm
+        com.docker.lb.port: 8080
+    networks:
+      - ucp-hrm
+
+networks:
+  ucp-hrm:
+    external: true
