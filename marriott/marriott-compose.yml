@@ -1,0 +1,35 @@
+version: "3.2"
+
+services:
+  demo:
+    image: shaker242/dlogo:red
+    deploy:
+      replicas: 1
+      placement:
+        constraints: [node.role == worker]
+      labels:
+        com.docker.lb.hosts: marriott.apps.docker.ee
+        com.docker.lb.network: ucp-hrm
+        com.docker.lb.port: 80
+    ports:
+      - "80"
+    networks:
+      - ucp-hrm
+    volumes:
+      - type: volume
+        source: marriott
+        target: /var/lib/nginx/html
+
+# HTTP Routing Mesh Network in Docker EE 
+networks:
+  ucp-hrm:
+    external: true
+
+# NFS mount 
+volumes:
+  marriott:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: addr=172.16.1.5,rw
+      device: ":/nfs/marriott"
