@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  webdemo:
+    image: shaker242/webdemo:nginx
+    ports:
+      - "8080"
+    networks:
+      - webdemo
+    deploy:
+      mode: replicated
+      replicas: 4
+      placement:
+        constraints: 
+          - node.role==worker
+          - node.platform.os==linux
+
+networks:
+  webdemo:
+    driver: overlay

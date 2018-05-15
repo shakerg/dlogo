@@ -12,7 +12,7 @@ services:
       labels:
           #com.docker.lb.host: "msdemo.apps.docker.ee"
           #com.docker.lb.port: 80
-          com.docker.ucp.mesh.http.80-21: "external_route=http://msdemo.apps.docker.ee,internal_port=80","external_route=http://demo2.apps.docker.ee,internal_port=80"
+          com.docker.ucp.mesh.http.80-21: "external_route=http://msdemo.apps.docker.ee,internal_port=80"
 
   networks: 
     - ucp-hrm
