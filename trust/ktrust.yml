@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: trustme-demo
+spec:
+  securityContext:
+    runAsUser: 100
+    fsGroup: 101
+  containers:
+  - name: sec-trust-demo
+    image: shaker242/dlogo:trust
+    securityContext:
+      allowPrivilegeEscalation: false
