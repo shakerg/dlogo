@@ -1,0 +1,18 @@
+version: "3.2"
+
+services:
+  demo:
+    image: dtr.docker.ee/dev/webapp:latest
+    ports:
+      - :80
+    deploy:
+      replicas: 2
+      placement:
+        constraints: 
+          - node.platform.os==linux
+    networks:
+      - demonet
+
+networks:
+  demonet:
+    driver: overlay
