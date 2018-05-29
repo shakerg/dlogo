@@ -3,10 +3,12 @@ version: "3.2"
 services:
   demo:
     image: ehazlett/docker-demo
+    ports:
+      - "8080"
     deploy:
       replicas: 1
       labels:
-        com.docker.lb.hosts: demo.apps.docker.ee
+        com.docker.lb.hosts: whaley.apps.docker.ee
         com.docker.lb.network: ucp-hrm
         com.docker.lb.port: 8080
     networks:

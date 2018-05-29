@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  web1:
+    image: microsoft/iis
+    ports:
+      - "80"
+    deploy:
+      mode: replicated
+      replicas: 1
+      labels:
+        com.docker.lb.hosts: iis.apps.docker.ee
+        com.docker.lb.network: ucp-hrm
+        com.docker.lb.port: 80
+
+  networks: 
+    - ucp-hrm
+
+networks:
+  ucp-hrm:
+    external: true
