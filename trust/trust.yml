@@ -1,19 +1,34 @@
-version: "3"
+version: "3.2"
+
+secrets:
+  apps.docker.ee.cert:
+    file: ./apps.docker.ee.cert
+  apps.docker.ee.key:
+    file: ./apps.docker.ee.key
+
+networks:
+  ucp-hrm:
+    driver: overlay
+
 services:
   trustweb:
     image: shaker242/dlogo:trust
     ports:
       - "8080"
     networks:
-      - trustnet
+      - ucp-hrm
     deploy:
-      mode: replicated
-      replicas: 4
+      replicas: 1
+      labels:
+        com.docker.lb.hosts: trust.apps.docker.ee
+        com.docker.lb.network: ucp-hrm
+        com.docker.lb.port: "8080"
+        com.docker.lb.ssl_cert: apps.docker.ee.cert
+        com.docker.lb.ssl_key: apps.docker.ee.key
+        com.docker.lb.redirects: http://trust.apps.docker.ee,https://trust.apps.docker.ee
+    environment:
+      METADATA: proxy-handles-tls
       placement:
         constraints: 
           - node.role==worker
           - node.platform.os==linux
-
-networks:
-  trustnet:
-    driver: overlay
