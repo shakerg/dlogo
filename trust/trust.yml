@@ -1,16 +1,16 @@
 version: "3.2"
 
 networks:
-  ucp-hrm:
+  ucp-interlock:
     external: true
 
 services:
   trustweb:
-    image: dtr.docker.ee/trust/whale:0.34
+    image: dtr.docker.ee/trust/whale:0.40
     ports:
       - "8080"
     networks:
-      - ucp-hrm
+      - ucp-interlock
     deploy:
       mode: replicated
       replicas: 1
@@ -20,7 +20,7 @@ services:
           - node.platform.os==linux
       labels:
         com.docker.lb.hosts: trust.apps.docker.ee
-        com.docker.lb.network: ucp-hrm
+        com.docker.lb.network: ucp-interlock
         com.docker.lb.port: "8080"
         com.docker.lb.ssl_cert: apps.docker.ee.cert
         com.docker.lb.ssl_key: apps.docker.ee.key
