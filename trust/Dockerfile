@@ -1,4 +1,4 @@
-FROM dtr.docker.ee/official/alpine:latest
+FROM dtr.docker.ee/official/alpine:3.8
 
 LABEL maintainer="shaker242@gmail.com"
 
