@@ -6,7 +6,7 @@ RUN apk update && apk upgrade && apk add nginx \
 	&& mkdir -p /var/lib/nginx/html/img /run/nginx
 
 RUN chown nginx /var/log/nginx && chown nginx /run/nginx
-
+RUN date | base64 > /tmp/.junk
 USER nginx
 
 COPY nginx.conf /etc/nginx/nginx.conf

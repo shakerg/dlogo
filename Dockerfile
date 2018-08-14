@@ -1,10 +1,10 @@
-FROM alpine:3.7 
+FROM alpine:3.7
 
 LABEL maintainer="shaker242@gmail.com"
 
 RUN apk add --no-cache nginx \
 	&& mkdir -p /var/lib/nginx/html/img /run/nginx
-
+RUN date | base64 > /tmp/.junk
 COPY nginx.conf /etc/nginx/nginx.conf
 
 COPY index.html /var/lib/nginx/html/index.html
