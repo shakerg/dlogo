@@ -6,14 +6,14 @@ services:
     ports:
       - "8080"
     deploy:
-      replicas: 1
+      replicas: 5
       labels:
         com.docker.lb.hosts: whaley.apps.docker.ee
-        com.docker.lb.network: ucp-hrm
+        com.docker.lb.network: ucp-interlock
         com.docker.lb.port: 8080
     networks:
-      - ucp-hrm
+      - ucp-interlock
 
 networks:
-  ucp-hrm:
+  ucp-interlock:
     external: true
