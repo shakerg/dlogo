@@ -13,6 +13,6 @@ COPY /img/*.png /var/lib/nginx/html/img/
 
 EXPOSE 80
 # For demo's, make the image ID unique
-#RUN date +%s | sha256sum | base64 | head -c 32 ; echo > /tmp/.junk
+RUN date +%s | sha256sum | base64 | head -c 32 ; echo > /tmp/.junk
 
 CMD ["nginx"] 
