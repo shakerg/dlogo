@@ -1,16 +1,21 @@
 version: "3.2"
 
 services:
-  demo:
+  whaley:
     image: ehazlett/docker-demo
     ports:
       - "8080"
     deploy:
-      replicas: 5
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints: 
+          - node.role==worker
+          - node.platform.os==linux
       labels:
         com.docker.lb.hosts: whaley.apps.docker.ee
         com.docker.lb.network: ucp-interlock
-        com.docker.lb.port: 8080
+        com.docker.lb.port: "8080"
     networks:
       - ucp-interlock
 

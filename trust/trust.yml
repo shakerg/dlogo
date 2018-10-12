@@ -6,7 +6,7 @@ networks:
 
 services:
   trustweb:
-    image: dtr.docker.ee/trust/whale:0.40
+    image: dtr.docker.ee/trust/whale:0.49
     ports:
       - "8080"
     networks:
