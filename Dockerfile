@@ -5,8 +5,6 @@ LABEL maintainer="shaker242@gmail.com"
 RUN apk add --no-cache nginx \
 	&& mkdir -p /var/lib/nginx/html/img /run/nginx
 
-HEALTHCHECK --interval=5s --timeout=5s CMD curl --fail http://localhost/ || exit 1
-
 COPY nginx.conf /etc/nginx/nginx.conf
 
 COPY index.html /var/lib/nginx/html/index.html
