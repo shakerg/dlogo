@@ -1,18 +1,24 @@
 version: "3.2"
-
 services:
-  demo:
-    image: dtr.docker.ee/dev/webapp:latest
-    ports:
-      - :80
+  dlogo:
+    image: dtr.docker.ee/official/webapp:stable
     deploy:
-      replicas: 2
+      mode: replicated
+      replicas: 1
       placement:
         constraints: 
+          - node.role==worker
           - node.platform.os==linux
+      labels:
+        com.docker.lb.hosts: dlogo.apps.docker.ee
+        com.docker.lb.network: frontend
+        com.docker.lb.port: "80"
     networks:
-      - demonet
-
+      - frontend
+    healthcheck:
+      interval: 10s
+      timeout: 2s
+      retries: 3  
 networks:
-  demonet:
+  frontend:
     driver: overlay

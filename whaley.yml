@@ -1,10 +1,9 @@
 version: "3.2"
-
 services:
   whaley:
     image: ehazlett/docker-demo
-    ports:
-      - "8080"
+    # ports:
+    #   - "8080"
     deploy:
       mode: replicated
       replicas: 1
@@ -14,11 +13,11 @@ services:
           - node.platform.os==linux
       labels:
         com.docker.lb.hosts: whaley.apps.docker.ee
-        com.docker.lb.network: ucp-interlock
+        com.docker.lb.network: frontend
         com.docker.lb.port: "8080"
     networks:
-      - ucp-interlock
+      - frontend
 
 networks:
-  ucp-interlock:
-    external: true
+  frontend:
+    driver: overlay
