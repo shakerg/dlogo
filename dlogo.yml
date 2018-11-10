@@ -11,7 +11,7 @@ services:
           - node.platform.os==linux
       labels:
         com.docker.lb.hosts: dlogo.apps.docker.ee
-        com.docker.lb.network: frontend
+        com.docker.lb.network: webapp_frontend
         com.docker.lb.port: "80"
     networks:
       - frontend
@@ -22,3 +22,5 @@ services:
 networks:
   frontend:
     driver: overlay
+
+# docker stack deploy -c dlogo.yml webapp
