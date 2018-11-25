@@ -1,17 +1,13 @@
 version: "3.2"
-networks:
-  frontend:
-    external: true
-
 services:
   trustweb:
-    image: dtr.docker.ee/official/trust:moby.02
-    resources:
-      limits:
-        memory: 24M
+    image: dtr.docker.ee/official/trust:moby.59
     networks:
-      - ucp-interlock
+      - frontend
     deploy:
+      resources:
+        limits:
+          memory: 24M
       mode: replicated
       replicas: 1
       placement:
@@ -27,3 +23,7 @@ services:
         com.docker.lb.redirects: http://trust.apps.docker.ee,https://trust.apps.docker.ee
     environment:
       METADATA: proxy-handles-tls
+networks:
+  frontend:
+    driver: overlay
+ 
