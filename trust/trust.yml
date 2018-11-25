@@ -1,14 +1,14 @@
 version: "3.2"
-
 networks:
-  ucp-interlock:
+  frontend:
     external: true
 
 services:
   trustweb:
-    image: dtr.docker.ee/trust/whale:0.49
-    ports:
-      - "8080"
+    image: dtr.docker.ee/official/trust:moby.02
+    resources:
+      limits:
+        memory: 24M
     networks:
       - ucp-interlock
     deploy:
@@ -20,7 +20,7 @@ services:
           - node.platform.os==linux
       labels:
         com.docker.lb.hosts: trust.apps.docker.ee
-        com.docker.lb.network: ucp-interlock
+        com.docker.lb.network: frontend
         com.docker.lb.port: "8080"
         com.docker.lb.ssl_cert: apps.docker.ee.cert
         com.docker.lb.ssl_key: apps.docker.ee.key

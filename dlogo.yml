@@ -3,6 +3,9 @@ services:
   dlogo:
     image: dtr.docker.ee/official/webapp:stable
     deploy:
+      resources:
+        limits:
+          memory: 24M
       mode: replicated
       replicas: 1
       placement:
@@ -22,5 +25,4 @@ services:
 networks:
   frontend:
     driver: overlay
-
 # docker stack deploy -c dlogo.yml webapp
