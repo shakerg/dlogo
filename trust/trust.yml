@@ -20,6 +20,7 @@ services:
         com.docker.lb.port: "8080"
         com.docker.lb.ssl_cert: apps.docker.ee.cert
         com.docker.lb.ssl_key: apps.docker.ee.key
+        com.docker.lb.ssl_backend: true
         com.docker.lb.redirects: http://trust.apps.docker.ee,https://trust.apps.docker.ee
     environment:
       METADATA: proxy-handles-tls

@@ -1,21 +1,22 @@
-version: "3"
-
+version: "3.2"
 services:
   web1:
-    image: microsoft/iis
-    ports:
-      - "80"
+    image: microsoft/iis:nanoserver
     deploy:
+      resources:
+        limits:
+          memory: 64M
       mode: replicated
       replicas: 1
       labels:
-        com.docker.lb.hosts: iis.apps.docker.ee
-        com.docker.lb.network: ucp-hrm
+        com.docker.lb.hosts: winweb.apps.docker.ee
         com.docker.lb.port: 80
-
-  networks: 
-    - ucp-hrm
+        com.docker.lb.ssl_cert: apps.docker.ee.cert
+        com.docker.lb.ssl_key: apps.docker.ee.key
+        com.docker.lb.redirects: http://winweb.apps.docker.ee,https://winweb.apps.docker.ee
+    networks: 
+      - frontend
 
 networks:
-  ucp-hrm:
-    external: true
+  frontend:
+    driver: overlay
