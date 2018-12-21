@@ -2,8 +2,8 @@ version: "3.5"
 services:
   nginx:
     image: nginx:latest
-    ports:
-      - "37080:8080"
+    # ports:
+    #   - "37080:8080"
     deploy:
       resources:
         limits:
