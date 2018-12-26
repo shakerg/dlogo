@@ -2,8 +2,6 @@ version: "3.2"
 services:
   moby:
     image: ehazlett/docker-demo
-    # ports:
-    #   - "8080"
     deploy:
       mode: replicated
       replicas: 1
