@@ -8,6 +8,11 @@ services:
           memory: 24M
       mode: replicated
       replicas: 2
+      update_config:
+        parallelism: 1
+        delay: 10s
+      restart_policy:
+        condition: on-failure
       placement:
         constraints: 
           - node.role==worker
