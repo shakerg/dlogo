@@ -1,7 +1,7 @@
 version: "3.5"
 services:
   dlogo:
-    image: dtr.docker.ee/staging/dlogo:stable
+    image: dtr.docker.ee/production/webapp:latest
     deploy:
       resources:
         limits:
