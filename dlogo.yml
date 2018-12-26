@@ -2,6 +2,7 @@ version: "3.5"
 services:
   dlogo:
     image: dtr.docker.ee/production/webapp:latest
+    pull: true
     deploy:
       resources:
         limits:
