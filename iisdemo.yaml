@@ -1,7 +1,7 @@
 version: "3.2"
 services:
   web1:
-    image: microsoft/iis:nanoserver
+    image: dtr.docker.ee/official/microsoft:iis-nanoserver
     deploy:
       resources:
         limits:
@@ -13,7 +13,7 @@ services:
         com.docker.lb.port: 80
         com.docker.lb.ssl_cert: apps.docker.ee.cert
         com.docker.lb.ssl_key: apps.docker.ee.key
-        com.docker.lb.redirects: http://winweb.apps.docker.ee,https://winweb.apps.docker.ee
+        com.docker.lb.redirects: http://iis.apps.docker.ee,https://iis.apps.docker.ee
     networks: 
       - frontend
 

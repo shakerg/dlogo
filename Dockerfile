@@ -15,6 +15,6 @@ EXPOSE 80
 # For demo's, make the image ID unique
 RUN date +%s | sha256sum | base64 | head -c 32 ; echo > /.junk
 
-HEALTHCHECK CMD curl --fail http://localhost:80/ || exit 1
+#HEALTHCHECK CMD curl --fail http://localhost:80/ || exit 1
 
 CMD ["nginx"] 
