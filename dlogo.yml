@@ -12,6 +12,7 @@ services:
         constraints: 
           - node.role==worker
           - node.platform.os==linux
+          - node.labels.com.docker.ucp.orchestrator.swarm=true 
       labels:
         com.docker.lb.hosts: dlogo.apps.docker.ee
         com.docker.lb.network: frontend
