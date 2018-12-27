@@ -1,8 +1,7 @@
 version: "3.5"
 services:
   dlogo:
-    image: dtr.docker.ee/production/webapp:latest
-    pull: true
+    image: dtr.docker.ee/production/webapp:go.26
     deploy:
       resources:
         limits:
@@ -19,13 +18,12 @@ services:
         com.docker.lb.port: "80"
     networks:
       - frontend
-    healthcheck:
-      healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost"]
-      start_period: 40s
-      interval: 10s
-      timeout: 2s
-      retries: 3  
+    # healthcheck:
+    #   test: ["CMD", "curl", "-f", "http://localhost"]
+    #   start_period: 10s
+    #   interval: 10s
+    #   timeout: 2s
+    #   retries: 3  
 networks:
   frontend:
     driver: overlay
