@@ -18,12 +18,12 @@ services:
         com.docker.lb.port: "80"
     networks:
       - frontend
-    # healthcheck:
-    #   test: ["CMD", "curl", "-f", "http://localhost"]
-    #   start_period: 10s
-    #   interval: 10s
-    #   timeout: 2s
-    #   retries: 3  
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://dlogo.apps.docker.ee"]
+      start_period: 10s
+      interval: 10s
+      timeout: 2s
+      retries: 3  
 networks:
   frontend:
     driver: overlay
