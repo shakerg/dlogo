@@ -7,29 +7,29 @@ services:
         limits:
           memory: 24M
       mode: replicated
-      replicas: 4
+      replicas: 2
       update_config:
         parallelism: 1
         delay: 15s
-        order: stop-first
+        order: start-first
       placement:
         constraints: 
-          - node.role==worker
+          - node.labels.app==worker
           - node.platform.os==linux
       labels:
         com.docker.lb.hosts: dlogo.apps.docker.ee
-        com.docker.lb.network: frontend
+        com.docker.lb.network: interlock
         com.docker.lb.port: "80"
     networks:
-      - frontend
+      - interlock
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost"]
+      test: ["CMD", "curl", "-f", "http://localhost/"]
       start_period: 10s
       interval: 10s
       timeout: 2s
       retries: 3  
 networks:
-  frontend:
-    driver: overlay
+  interlock:
+    external: true
 
 # docker stack deploy -c dlogo.yml webapp
