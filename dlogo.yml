@@ -1,13 +1,17 @@
 version: "3.5"
 services:
   dlogo:
-    image: dtr.docker.ee/production/webapp:go.26
+    image: dtr.docker.ee/production/webapp:stable
     deploy:
       resources:
         limits:
           memory: 24M
       mode: replicated
       replicas: 2
+      update_config:
+        parallelism: 1
+        delay: 10s
+        order: stop-first
       placement:
         constraints: 
           - node.role==worker
@@ -19,7 +23,7 @@ services:
     networks:
       - frontend
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://dlogo.apps.docker.ee"]
+      test: ["CMD", "curl", "-f", "http://localhost"]
       start_period: 10s
       interval: 10s
       timeout: 2s
