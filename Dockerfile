@@ -1,10 +1,10 @@
-FROM dtr.docker.ee/official/alpine:3.8
+FROM dtr.docker.ee/official/alpine:3.8-signed
 
 LABEL maintainer="shaker242@gmail.com"
 LABEL OS_VER=EE-OFFICIAL_ALPINE_3.8 \
 	EXPOSED=HTTP \
 	HEALTHCHECK=NULL
-	
+
 RUN apk add --no-cache nginx curl \
 	&& mkdir -p /var/lib/nginx/html/img /run/nginx
 
