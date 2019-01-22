@@ -1,4 +1,4 @@
-FROM dtr.docker.ee/linux/alpine:3.8
+FROM dtr.docker.ee/linux/alpine:3.8-signed
 LABEL MAINTAINER="shaker@docker.com"
 LABEL OS_VER="EE-OFFICIAL_ALPINE_3.8"
 LABEL HEALTHCHECK="NULL"
