@@ -11,7 +11,7 @@ services:
       update_config:
         parallelism: 1
         delay: 15s
-        order: start-first
+        order: stop-first
       placement:
         constraints: 
           - node.labels.app==worker
