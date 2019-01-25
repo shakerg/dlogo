@@ -1,21 +1,23 @@
-FROM dtr.docker.ee/core/alpine:3.8
+FROM dtr.docker.ee/linux/alpine:3.8-signed
+LABEL MAINTAINER="shaker@docker.com"
+LABEL OS_VER="EE-OFFICIAL_ALPINE_3.8"
+LABEL HEALTHCHECK="NULL"
+LABEL STACK="webapp"
+LABEL APK="nginx curl"
 
-LABEL maintainer="shaker242@gmail.com"
-
-RUN apk update && apk upgrade && apk add nginx \
+RUN apk add --no-cache nginx curl \
 	&& mkdir -p /var/lib/nginx/html/img /run/nginx
 
-RUN chown nginx /var/log/nginx && chown nginx /run/nginx
-
-USER nginx
+RUN chown nginx /var/log/nginx /run/nginx/ 
 
 COPY nginx.conf /etc/nginx/nginx.conf
 
 COPY index.html /var/lib/nginx/html/index.html
 
-COPY securemoby.png /var/lib/nginx/html/img/
+COPY /img/*.png /var/lib/nginx/html/img/
 
 EXPOSE 8080
-# For demo's, make the image ID unique
-RUN date +%s | sha256sum | base64 | head -c 32 ; echo > /tmp/.junk
+
+USER nginx
+
 CMD ["nginx"] 

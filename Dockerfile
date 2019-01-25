@@ -7,6 +7,8 @@ LABEL APK="nginx curl"
 
 RUN apk add --no-cache nginx curl \
 	&& mkdir -p /var/lib/nginx/html/img /run/nginx
+	
+RUN chown nginx /var/log/nginx /run/nginx/ 
 
 COPY nginx.conf /etc/nginx/nginx.conf
 
