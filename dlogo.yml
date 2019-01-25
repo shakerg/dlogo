@@ -11,11 +11,10 @@ services:
       update_config:
         parallelism: 1
         delay: 15s
-        order: stop-first
+        order: start-first
       placement:
         constraints: 
           - node.labels.app==worker
-          #- node.platform.os==linux
       labels:
         com.docker.lb.hosts: dlogo.apps.docker.ee
         com.docker.lb.network: interlock
@@ -24,7 +23,7 @@ services:
       - interlock
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost/"]
-      start_period: 10s
+      start_period: 15s
       interval: 10s
       timeout: 2s
       retries: 3  
