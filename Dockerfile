@@ -13,6 +13,6 @@ COPY nginx.conf /etc/nginx/nginx.conf
 COPY index.html /var/lib/nginx/html/index.html
 COPY /img/*.png /var/lib/nginx/html/img/
 
-EXPOSE 80
+EXPOSE 8080
 
 CMD ["nginx"] 
