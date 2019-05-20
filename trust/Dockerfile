@@ -1,4 +1,4 @@
-FROM dtr.docker.ee/linux/alpine:3.8-signed
+FROM alpine
 
 RUN apk add --no-cache nginx curl \
 	&& mkdir -p /var/lib/nginx/html/img /run/nginx
