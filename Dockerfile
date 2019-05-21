@@ -1,7 +1,7 @@
-FROM dtr.docker.ee/linux/alpine:3.8-signed
+FROM alpine
 
 LABEL MAINTAINER="shaker@docker.com"
-LABEL OS_VER="EE-OFFICIAL_ALPINE_3.8"
+LABEL OS_VER="OFFICIAL_ALPINE_3.9"
 LABEL HEALTHCHECK="NULL"
 LABEL STACK="webapp"
 LABEL APK="nginx curl"
@@ -11,7 +11,7 @@ RUN apk add --no-cache nginx curl \
 
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY index.html /var/lib/nginx/html/index.html
-COPY /img/*.png /var/lib/nginx/html/img/
+COPY /img/* /var/lib/nginx/html/img/
 
 EXPOSE 80
 
