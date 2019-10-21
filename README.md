@@ -1,7 +1,7 @@
 ### DLOGO
-This is a simple logo change demo that illistrates how eazy using CI/CD and Docker EE really is.
+This is a simple logo change demo that illistrates how to use CICD with containters. 
 
-### This demo is based off of tweetly, but adding alpine so it's possible to check CVE against promotions in DTR.
+# This github page is old, but I still use the content for testing - not everything will work nor be compatible.
 
 ## This repo actually includes 3 separate demo's.
 - basic logo
