@@ -3,8 +3,6 @@ FROM alpine
 LABEL MAINTAINER="shaker@docker.com"
 LABEL OS_VER="OFFICIAL_ALPINE_3.9"
 LABEL HEALTHCHECK="NULL"
-LABEL STACK="webapp"
-LABEL APK="nginx curl"
 
 RUN apk add --no-cache nginx curl \
 	&& mkdir -p /var/lib/nginx/html/img /run/nginx
