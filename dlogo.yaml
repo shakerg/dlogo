@@ -1,0 +1,62 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dlogo
+  namespace: dlogo
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: dlogo
+  labels:
+    run: dlogo
+  name: dlogo-service
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    run: dlogo
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: dlogo
+  labels:
+    run: dlogo
+  name: dlogo-deploy
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      run: dlogo
+  template:
+    metadata:
+      labels:
+        run: dlogo
+    spec:
+      containers:
+      - image: shaker242/dlogo
+        name: dlogo
+        ports:
+        - containerPort: 80
+          protocol: TCP
+---
+kind: Ingress
+apiVersion: extensions/v1beta1
+metadata:
+  namespace: dlogo
+  name: dlogo-ingress
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+spec:
+  rules:
+  - host: "dlogo.apps.shaker242.lab"
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: dlogo-service
+          servicePort: 80
