@@ -1,7 +1,6 @@
 FROM alpine
 
-LABEL MAINTAINER="shaker@docker.com"
-LABEL OS_VER="OFFICIAL_ALPINE_3.9"
+LABEL MAINTAINER="shaker242@gmail.com"
 LABEL HEALTHCHECK="NULL"
 
 RUN apk add --no-cache nginx curl \
