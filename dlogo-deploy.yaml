@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: dlogo
+  labels:
+    run: dlogo
+  name: dlogo-deploy
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      run: dlogo
+  template:
+    metadata:
+      labels:
+        run: dlogo
+    spec:
+      containers:
+      - image: shaker242/dlogo
+        name: dlogo
+        ports:
+        - containerPort: 80
+          protocol: TCP
