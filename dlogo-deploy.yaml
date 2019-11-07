@@ -16,7 +16,7 @@ spec:
         run: dlogo
     spec:
       containers:
-      - image: shaker242/dlogo
+      - image: shaker242/dlogo:${BUILD_NUMBER}
         name: dlogo
         ports:
         - containerPort: 80
