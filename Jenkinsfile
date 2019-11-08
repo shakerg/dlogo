@@ -34,5 +34,10 @@ pipeline {
         sh "docker rmi $registry:$BUILD_NUMBER"
       }
     }
+    stage('Deploy') {
+      steps {
+        sh "kubectl set image deployment/dlogo dlogo=$registry:$BUILD_NUMBER"
+      }
+    }
   }
 }
