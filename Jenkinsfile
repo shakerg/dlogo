@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    registry = "shaker242/jenkins"
+    registry = "shaker242/dlogo"
     registryCredential = "dockerhub"
     dockerImage = ''
   }
@@ -8,13 +8,13 @@ pipeline {
   stages {
     stage('Cloning Git') {
       steps {
-        git 'https://github.com/dglib/shaker242.lab.git'
+        git 'https://github.com/dglib/dlogo.git'
       }
     }
     stage('Building image') {
       steps{
         script {
-             dir("jenkins"){
+             dir("/var/jenkins_home/workspace/dlogo-pipeline/dlogo"){
           dockerImage = docker.build registry + ":$BUILD_NUMBER"
           }
         }
@@ -29,7 +29,7 @@ pipeline {
         }
       }
     }
-    stage('Remove Unused docker image') {
+    stage('Clean Up Builds') {
       steps{
         sh "docker rmi $registry:$BUILD_NUMBER"
       }
