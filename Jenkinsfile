@@ -14,7 +14,7 @@ pipeline {
     stage('Building image') {
       steps{
         script {
-             dir("/var/jenkins_home/workspace/dlogo-pipeline/dlogo"){
+             dir("${WORKSPACE}"){
           dockerImage = docker.build registry + ":$BUILD_NUMBER"
           }
         }
@@ -36,7 +36,7 @@ pipeline {
     }
     stage('Deploy') {
       steps {
-        sh "kubectl set image deployment/dlogo-deploy dlogo=$registry:$BUILD_NUMBER"
+        sh "kubectl -n dlogo set image deployment/dlogo-deploy dlogo=$registry:$BUILD_NUMBER"
       }
     }
   }
