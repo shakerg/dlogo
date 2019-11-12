@@ -36,7 +36,7 @@ pipeline {
     }
     stage('Deploy') {
       steps {
-        sh "kubectl set image deployment/dlogo dlogo=$registry:$BUILD_NUMBER"
+        sh "kubectl set image deployment/dlogo-deploy dlogo=$registry:$BUILD_NUMBER"
       }
     }
   }
