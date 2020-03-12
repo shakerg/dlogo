@@ -1,5 +1,5 @@
 FROM nginx:alpine
-
+  
 LABEL MAINTAINER="shaker242@gmail.com"
 LABEL HEALTHCHECK="NULL"
 
@@ -12,4 +12,4 @@ COPY /img/* /var/lib/nginx/html/img/
 USER nginx
 EXPOSE 8080
 
-ENTRYPOINT ["nginx"] 
+ENTRYPOINT ["nginx"]
