@@ -1,7 +1,7 @@
 FROM alpine
 
 RUN apk add --no-cache nginx curl shadow\
-	&& mkdir -p /var/lib/nginx/html/img /run/nginx /var/cache/nginx/client_temp
+	&& mkdir -p /var/lib/nginx/html/img /run/nginx /var/cache/nginx
 #RUN chown nginx /var/log/nginx /run/nginx/ 
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY index.html /var/lib/nginx/html/index.html
@@ -17,4 +17,4 @@ EXPOSE 8080
 
 USER nginx
 
-CMD ["nginx"] 
+CMD ["/usr/sbin/nginx"] 
