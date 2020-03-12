@@ -9,8 +9,8 @@ COPY /img/*.png /var/lib/nginx/html/img/
 RUN usermod -u 10001 nginx \
     && groupmod -g 2500 nginx
 
-RUN chown -R 10001:10001 /var/cache/nginx /var/run /var/log/nginx /var/cache/nginx/ /var/lib/nginx/html/ /run/nginx
-RUN chmod +x /var/cache/nginx /var/run /var/log/nginx /var/cache/nginx /var/lib/nginx/html
+RUN chown -R 10001:10001 /var/cache/nginx /var/run /var/log/nginx /var/cache/nginx/ /var/lib/nginx /run/nginx
+RUN chmod +x /var/cache/nginx /var/run /var/log/nginx /var/cache/nginx /var/lib/nginx
 
 
 EXPOSE 8080
