@@ -1,15 +1,13 @@
-FROM nginx:alpine
-  
-LABEL MAINTAINER="shaker242@gmail.com"
-LABEL HEALTHCHECK="NULL"
+FROM alpine
 
-RUN chmod g+rwx /var/cache/nginx /var/run /var/log/nginx
+RUN apk add --no-cache nginx curl \
+	&& mkdir -p /var/lib/nginx/html/img /run/nginx
 
-COPY nginx.conf /etc/nginx/config.d/default.conf
-COPY index.html /etc/nginx/html/index.html
-COPY /img/* /var/lib/nginx/html/img/
-
-USER nginx
+RUN chown nginx /var/log/nginx /run/nginx/ 
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY index.html /var/lib/nginx/html/index.html
+COPY /img/*.png /var/lib/nginx/html/img/
 EXPOSE 8080
+USER nginx
 
-ENTRYPOINT ["nginx"]
+CMD ["nginx"] 
