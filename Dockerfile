@@ -5,7 +5,7 @@ LABEL HEALTHCHECK="NULL"
 
 RUN chmod g+rwx /var/cache/nginx /var/run /var/log/nginx
 
-COPY nginx.conf /etc/nginx/nginx.conf
+COPY nginx.conf /etc/nginx/config.d/default.conf
 COPY index.html /etc/nginx/html/index.html
 COPY /img/* /var/lib/nginx/html/img/
 
