@@ -10,4 +10,4 @@ COPY index.html /var/lib/nginx/html/index.html
 COPY /img/*.png /var/lib/nginx/html/img/
 EXPOSE 8080
 USER 10001
-CMD /usr/sbin/nginx -g
+CMD /usr/sbin/nginx
