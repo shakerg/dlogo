@@ -1,4 +1,4 @@
-FROM alpine
+FROM alpine:3.8
 RUN apk add --no-cache nginx curl shadow\
 	&& mkdir -p /var/lib/nginx/html/img /run/nginx /var/cache/nginx /var/lib/nginx/data
 RUN usermod -u 10001 nginx \
