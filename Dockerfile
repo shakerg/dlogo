@@ -9,5 +9,5 @@ COPY nginx.conf /etc/nginx/config.d/default.conf
 COPY index.html /var/lib/nginx/html/index.html
 COPY /img/*.png /var/lib/nginx/html/img/
 EXPOSE 8080
-USER 10001
+#USER 10001
 CMD /usr/sbin/nginx
